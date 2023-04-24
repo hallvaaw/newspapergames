@@ -1,0 +1,117 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #0f0f0f;
+  background-color: #f6f6f6;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+  margin: 0;
+  padding-top: 10vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f6f6f6;
+    background-color: #2f2f2f;
+  }
+
+  a:hover {
+    color: #24c8db;
+  }
+
+  button {
+    color: #ffffff;
+    background-color: #0f0f0f98;
+  }
+  button:active {
+    background-color: #0f0f0f69;
+  }
+}
+
+/* Sudoku */
+
+* {
+    box-sizing: content-box;
+}
+
+main {
+    display: grid;
+    grid-template-rows: repeat(9, minmax(0, 1fr));
+    justify-content: center;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    border-style: solid;
+    border-width: 1px;
+    border-right-width: 0px;
+    border-left-width: 0px;
+    border-color: gray;
+}
+
+.row3 {
+    border-width: 0px;
+    border-top-width: 3px;
+    border-color: gray;
+}
+
+#row-0 {
+    border-top-width: 3px;
+    border-bottom-width: 0px;
+    border-color: gray;
+}
+
+#row-8 {
+    border-bottom-width: 3px;
+    border-color: gray;
+}
+
+#cell-0 {
+    border-left-width: 3px;
+    border-color: gray;
+}
+
+#cell-8 {
+    border-right-width: 3px;
+    border-color: gray;
+}
+
+.cell {
+    display: block;
+    border-style: solid;
+    border-width: 1px;
+    text-align: center;
+    width: 40px;
+    height: 40px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 6px;
+    padding-left: 6px;
+    margin: 0px;
+    border-color: gray;
+}
+
+.cell3 {
+    border-width: 0px;
+    border-left-width: 1px;
+    border-color: gray;
+}
