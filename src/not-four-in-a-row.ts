@@ -1,19 +1,18 @@
 import { invoke } from "@tauri-apps/api/tauri";
 
 const numArrays:datatype[][] = [[0, 0, 0, 0, 0, 0, 0, 0, 0],
-    [0, 1, 0, 0, 0, 0, 0, 0, 0],
-    [0, 2, 0, 0, 0, 0, 0, 0, 0],
-    [0, 3, 0, 0, 0, 0, 0, 0, 0],
-    [0, 4, 0, 0, 0, 0, 0, 0, 0],
-    [0, 5, 0, 0, 0, 0, 0, 0, 0],
-    [0, 6, 0, 0, 0, 0, 0, 0, 0],
-    [0, 7, 0, 0, 0, 0, 0, 0, 0],
-    [0, 8, 0, 0, 0, 0, 0, 0, 0]];
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0],
+    [0, 0, 0, 0, 0, 0, 0, 0, 0]];
 
 
 
 function checkUnique(arr) {
-    let n = arr.length;
+    const n = arr.length;
 
     let s = new Set();
     for (let i = 0; i < n; i++) {
@@ -23,7 +22,7 @@ function checkUnique(arr) {
 }
 
 function selectColumns(num) {
-    let arr:array = [];
+    const arr:array = [];
 
     for (let i = 0; i < 9; i++) {
         arr.push(numArrays[i][num]);
@@ -31,16 +30,13 @@ function selectColumns(num) {
     return arr;
 }
 
-let sudokuFrame = document.getElementById("sudoku-frame");
-for (let i = 0; i < 9; i++) {
+let gameFrame = document.getElementById("game-frame");
+for (let i = 0; i < 8; i++) {
     let row = document.createElement("tr");
     row.id = `row-${i}`;
     row.className = "row";
-    sudokuFrame.appendChild(row);
-    if (i >= 3 && i % 3 == 0) {
-        row.classList.add("row3");
-    }
-    for (let j = 0; j < 9; j++) {
+    gameFrame.appendChild(row);
+    for (let j = 0; j < 8; j++) {
         let cell = document.createElement("td");
         let cellInput = document.createElement("input");
         cell.id = `cell-${j}`;
@@ -50,10 +46,25 @@ for (let i = 0; i < 9; i++) {
         cellInput.max = 9;
         cellInput.id = `cell-input-${j}`;
         cell.className = "cell";
-        if (j >= 3 && j % 3 == 0) {
-            cell.classList.add("cell3");
-        }
         cell.appendChild(cellInput);
         row.appendChild(cell);
+    }
+}
+
+function checkQuads(arr) {
+    for (let i = 0; i < 5; i++) {
+        let zeroCount = 0;
+        let oneCount = 0;
+        let newArr:array = arr.slice(i, i+4);
+        for (let j = 0; j < 4; j++) {
+            if (newArr[j] == 0) {
+                zeroCount++;
+            } else {
+                oneCount++;
+            }
+        }
+        if (zeroCount > 3 || oneCount > 3) {
+            return false;
+        }
     }
 }

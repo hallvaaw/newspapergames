@@ -57,12 +57,11 @@ h1 {
     box-sizing: content-box;
 }
 
-table {
+#sudoku-frame {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 450px;
     justify-content: center;
-    border: solid gray 4px;
 }
 
 input {
@@ -79,12 +78,12 @@ input:hover {
 tr {
     display: grid;
     justify-content: center;
-    border: solid gray 2px;
 }
 
-.row {
+.sudoku-row {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    border: solid gray 2px;
 }
 
 /*
@@ -128,4 +127,27 @@ tr {
     border-color: gray;
 }
 */
+
+/* Not four-in-a-row */
+
+#game-frame {
+    display: grid;
+    justify-content: center;
+}
+
+input {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+input:hover {
+    background-color: #e5e7eb;
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(8, minmax(0, 1fr));
+}
 
